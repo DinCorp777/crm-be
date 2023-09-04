@@ -1,0 +1,46 @@
+import { Document, Types } from "mongoose";
+
+export interface IUser extends Document {
+	firstName?: string;
+	lastName?: string;
+	username: string;
+	name?: string;
+	email: string;
+	password?: string;
+	roleId?: Types.ObjectId;
+	profilePicture?: string;
+	resetPasswordToken?: string;
+	totalRepLeads?: string;
+	totalRepProjectKw?: string;
+	active?: boolean;
+	algoliaUpdate?: boolean;
+	allotCount?: number;
+	available?: boolean;
+	calId?: string;
+	count?: number;
+	hasCalId?: boolean;
+	kwPay?: string;
+	companyKW?: string;
+	method?: string;
+	soldAccount?: number;
+	locationId?: Types.ObjectId;
+	override?: number;
+	redline?: string;
+	totalSetterLeads?: string;
+	totalSetterProjectKw?: number;
+	referrals?: Array<any>;
+	repCloserCommissionTier?: string;
+	repWithSetterCommissionTier?: string;
+	permissions?: any;
+	sitPay?: number;
+	locationName?: any;
+	sitPayAmount?: number;
+	perSitAmount?: number;
+	totalAmount?: number;
+	path?: string;
+	eventsToday?: any;
+	basePPWAvg?: any;
+	companyCommission?: any;
+	priority?: number;
+	createdAt?: Date;
+}
