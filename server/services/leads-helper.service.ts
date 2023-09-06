@@ -6,7 +6,7 @@ export class LeadsHelperService {
     return new Promise(async (resolve, reject) => {
       try {
         const request = {
-          subject: `This eamil response will be sent to lead name ${lead.name}.`,
+          subject: `This email response will be sent to lead name ${lead.name} with email address ${lead.email}.`,
           email: "info@excel-pros.com",
           name: lead.name
         }
@@ -14,7 +14,8 @@ export class LeadsHelperService {
           .then((res) => {
             const requestLead = {
               subject: "Your request has been Successdully Recevied to Excel Pros.",
-              ...lead
+              email: lead.email,
+              name: lead.name
             }
             MailService.sendLeadCreationEmail(requestLead)
               .then((res) => {
