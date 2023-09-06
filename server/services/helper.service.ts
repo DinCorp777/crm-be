@@ -1,4 +1,3 @@
-import { IMeUser } from '../../types/me';
 import { IUser } from '../../types/user';
 import path from "path";
 import { v4 as uuidv4 } from 'uuid';
@@ -30,8 +29,6 @@ export class HelperService {
                                 email: user.email,
                                 username: user.username,
                                 roleId: user.roleId,
-                                locationId: user.locationId,
-                                calId: user.calId,
                                 profilePicture: user.profilePicture,
                                 role,
                                 permissions: permissions,

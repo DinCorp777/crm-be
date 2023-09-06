@@ -9,6 +9,5 @@ router.post('/login', controller.login);
 router.post('/forget-password', controller.forgotPassword);
 router.post('/reset-password/:id', controller.resetPassword);
 router.post('/action/perform/reset-password', controller.resetPasswordPerform);
-router.post('/login/user/new/session', controller.loginUserNewSession);
 
 export default router;

@@ -5,8 +5,6 @@ import { uploadMiddleware } from "../../../middlewares/file-upload";
 const router = express.Router();
 
 router.get('/', controller.get);
-router.get('/update/firstname/lastname', controller.updateFirstNameLastName);
-router.post('/query/users', controller.getUsersWithQuery);
 router.post('/', controller.create);
 router.post('/:id', controller.setupUserPassword);
 router.get('/:id', controller.getByID);

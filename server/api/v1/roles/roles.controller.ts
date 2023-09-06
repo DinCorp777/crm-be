@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import l, { logger } from "../../../common/logger";
 import { manageError } from "../../../helper/response.helper";
 import RolesService from "./roles.service";
-import { BaseController } from "../_base.controller";
+import { BaseController } from "../../_base.controller";
 
 export class Controller extends BaseController {
     

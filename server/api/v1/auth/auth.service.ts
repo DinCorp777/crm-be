@@ -56,8 +56,6 @@ export class AuthService {
                                 email: user.email,
                                 username: user.username,
                                 roleId: user.roleId,
-                                locationId: user.locationId,
-                                calId: user.calId,
                                 profilePicture: user.profilePicture,
                                 role,
                                 permissions: permissions,
@@ -183,71 +181,6 @@ export class AuthService {
                     .catch((error) => {
                         reject(error)
                     });
-            } catch (err) {
-                reject(err);
-            }
-        });
-    }
-    loginUserNewSession(payload): Promise<IloginResponse> {
-        return new Promise(async (resolve, reject) => {
-            try {
-                const { email, password } = payload;
-
-                if (!email) {
-                    return reject({ code: 400, message: 'Invalid Email and Password.' })
-                }
-                if (!password) {
-                    return reject({ code: 400, message: 'Invalid Password.' })
-                }
-
-                let user = await User.findOne({ email });
-                if (!user) {
-                    return reject({ message: 'User does not exists', code: 400 });
-                }
-                const passwordIsValid = password === user.password;
-                if (!passwordIsValid) {
-                    return reject({ message: 'Email or Password invalid!', code: 400 });
-                }
-
-                const token = jwt.sign({ id: user.id }, config.JWT_SECRET, {
-                    expiresIn: 604800, // 1 week hours
-                    algorithm: 'HS256'
-                });
-
-                let permissions = [];
-                let role = '';
-
-                Roles.find({ _id: user.roleId })
-                    .then((res) => {
-                        if (res.length) {
-                            let one = res[0];
-                            role = one.role;
-                            one.access.forEach((access) => {
-                                access.permissions.forEach((permission) => {
-                                    let obj = {
-                                        featureName: permission.featureName,
-                                        accessValue: permission.accessValue
-                                    }
-                                    permissions.push(obj);
-                                });
-                            });
-                            const loginRes = {
-                                id: user._id,
-                                email: user.email,
-                                username: user.username,
-                                roleId: user.roleId,
-                                locationId: user.locationId,
-                                calId: user.calId,
-                                profilePicture: user.profilePicture,
-                                role,
-                                permissions: permissions,
-                                accessToken: token,
-                                createdAt: user.createdAt,
-                            };
-                            resolve(loginRes);
-                        }
-                    });
-
             } catch (err) {
                 reject(err);
             }

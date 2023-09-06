@@ -3,9 +3,10 @@ import l, { logger } from "../../../common/logger";
 import { manageError } from "../../../helper/response.helper";
 import AuthService from "./auth.service";
 import HelperService from "../../../services/helper.service";
-import { BaseController } from "../_base.controller";
+import { BaseController } from "../../_base.controller";
 
 export class Controller extends BaseController {
+    
     async login(req: Request, res: Response): Promise<void> {
         try {
             const response = await AuthService.login(req.body);
@@ -68,20 +69,6 @@ export class Controller extends BaseController {
             logger.error(error);
             const err = manageError(error);
             l.error(`Error in resetting password, err code: ${400}`);
-            l.error(err.message);
-            super.response(res, '', err.code, err.message);
-        }
-    }
-    async loginUserNewSession(req: Request, res: Response): Promise<void> {
-        try {
-            const response = await AuthService.loginUserNewSession(req.body);
-            res.cookie('token', response.accessToken);
-            super.response(res, response, 200, "");
-        }
-        catch (error) {
-            logger.error(error);
-            const err = manageError(error);
-            l.error(`Error in login, err code: ${400}`);
             l.error(err.message);
             super.response(res, '', err.code, err.message);
         }

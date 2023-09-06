@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: url(../assets/bg.png);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .container .greetings {
+            text-align: center;
+            font-size: 30px;
+            font-family: sans-serif;
+            letter-spacing: 1px;
+            font-weight: 600;
+            color: #3aba86;
+            margin-top: 60px;
+        }
+
+        .container .tagline {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .container .tagline .text {
+            color: #3aba86;
+            font-size: 32px;
+            font-weight: 600;
+            font-style: italic;
+            font-family: sans-serif;
+        }
+
+        .container .tagline .boxes {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .container .tagline .boxes .small {
+            height: 16px;
+            width: 10px;
+            background: #a7ffdb;
+            border-radius: 2px;
+        }
+
+        .container .tagline .boxes .medium {
+            height: 20px;
+            width: 16px;
+            background: #72e4b6;
+            border-radius: 2px;
+        }
+
+        .container .tagline .boxes .large {
+            height: 24px;
+            width: 20px;
+            background: #3aba86;
+            border-radius: 2px;
+        }
+
+        .sub-tagline {
+            text-align: center;
+            font-size: 30px;
+            font-family: sans-serif;
+            margin-top: 60px;
+        }
+
+        .button-tag {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 60px;
+        }
+
+        .button-tag .button {
+            background: #3aba86;
+            color: white;
+            font-family: sans-serif;
+            padding: 10px 30px;
+            border-radius: 5px;
+            font-size: 22px;
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 60px;
+        }
+
+        .logo img {
+            height: 60px;
+        }
+
+        .social-media {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-media .icon-ref {
+            text-decoration: none;
+        }
+
+        .footer {
+            background: #3aba86;
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .footer .contact {
+            display: flex;
+            flex-direction: column;
+            font-family: sans-serif;
+            color: white;
+            gap: 10px;
+        }
+
+        .footer .contact .title {
+            font-weight: 600;
+            font-size: 20px;
+        }
+
+        .footer .contact .numbers {
+            display: flex;
+            flex-direction: column;
+            font-size: 14px;
+            gap: 3px;
+        }
+
+        .footer .descripttion {
+            font-weight: 600;
+            font-size: 20px;
+            font-family: sans-serif;
+            color: white;
+            text-align: justify;
+        }
+
+        @media only screen and (max-width: 828px) {
+            .container .greetings {
+                font-size: 26px;
+            }
+
+            .container .tagline .text {
+                font-size: 28px;
+            }
+
+            .sub-tagline {
+                font-size: 28px;
+            }
+
+            .container .tagline .boxes .large {
+                height: 22px;
+                width: 18px;
+            }
+
+            .container .tagline .boxes .medium {
+                height: 18px;
+                width: 14px;
+            }
+
+            .container .tagline .boxes .small {
+                height: 14px;
+                width: 8px;
+            }
+        }
+
+        @media only screen and (max-width: 738px) {
+            .container .greetings {
+                font-size: 22px;
+            }
+
+            .container .tagline .text {
+                font-size: 24px;
+            }
+
+            .sub-tagline {
+                font-size: 22px;
+            }
+
+            .container .tagline {
+                gap: 20px;
+            }
+
+            .container .tagline .boxes .large {
+                height: 22px;
+                width: 18px;
+            }
+
+            .container .tagline .boxes .medium {
+                height: 18px;
+                width: 14px;
+            }
+
+            .container .tagline .boxes .small {
+                height: 14px;
+                width: 8px;
+            }
+        }
+
+        @media only screen and (max-width: 642px) {
+            .container .greetings {
+                font-size: 18px;
+            }
+
+            .container .tagline .text {
+                font-size: 20px;
+            }
+
+            .sub-tagline {
+                font-size: 18px;
+            }
+
+            .container .tagline {
+                gap: 15px;
+            }
+
+            .container .tagline .boxes .large {
+                height: 20px;
+                width: 16px;
+            }
+
+            .container .tagline .boxes .medium {
+                height: 16px;
+                width: 12px;
+            }
+
+            .container .tagline .boxes .small {
+                height: 12px;
+                width: 8px;
+            }
+
+            .button-tag .button {
+                font-size: 16px;
+            }
+
+            .footer .contact .title {
+                font-size: 16px;
+            }
+
+            .footer .contact .numbers {
+                font-size: 12px;
+            }
+
+            .footer .descripttion {
+                font-size: 16px;
+            }
+        }
+
+        @media only screen and (max-width: 546px) {
+            .container .greetings {
+                font-size: 16px;
+                margin-top: 40px;
+            }
+
+            .container .tagline .text {
+                font-size: 16px;
+            }
+
+            .sub-tagline {
+                font-size: 16px;
+                margin-top: 40px;
+            }
+
+            .container .tagline {
+                gap: 15px;
+                margin-top: 40px;
+            }
+
+            .container .tagline .boxes .large {
+                height: 18px;
+                width: 14px;
+            }
+
+            .container .tagline .boxes .medium {
+                height: 14px;
+                width: 10px;
+            }
+
+            .container .tagline .boxes .small {
+                height: 10px;
+                width: 8px;
+            }
+
+            .button-tag {
+                margin-top: 40px;
+            }
+
+            .logo {
+                margin-top: 40px;
+            }
+
+            .button-tag .button {
+                font-size: 16px;
+            }
+
+            .footer {
+                margin-top: 20px;
+            }
+
+            .footer .contact .title {
+                font-size: 16px;
+            }
+
+            .footer .contact .numbers {
+                font-size: 12px;
+            }
+
+            .footer .descripttion {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="greetings">
+            Hello! <%= name %>
+        </div>
+        <div class="tagline">
+            <div class="boxes">
+                <div class="large"></div>
+                <div class="medium"></div>
+                <div class="small"></div>
+            </div>
+            <div class="text">
+                Thankyou for your interest in Excel Pros
+            </div>
+            <div class="boxes">
+                <div class="small"></div>
+                <div class="medium"></div>
+                <div class="large"></div>
+            </div>
+        </div>
+        <div class="sub-tagline">
+            Your Reliable Excel Partner for all your excel <br /> woes and problems
+        </div>
+        <div class="button-tag">
+            <div class="button">
+                We'll be in touch shortly
+            </div>
+        </div>
+        <div class="logo">
+            <img src="../assets/logo.webp" alt="Excel Pros Logo">
+        </div>
+        <div class="social-media">
+            <a href="https://www.excel-pros.com/" class="icon-ref">
+                <img src="../assets/youtube.svg" alt="Youtube Icon">
+            </a>
+            <a href="https://ca.linkedin.com/company/excel-pros" class="icon-ref">
+                <img src="../assets/linkedin.svg" alt="linkedin Icon">
+            </a>
+            <a href="https://www.excel-pros.com/" class="icon-ref">
+                <img src="../assets/facebook.svg" alt="Facebook Icon">
+            </a>
+            <a href="https://www.excel-pros.com/" class="icon-ref">
+                <img src="../assets/instagram.svg" alt="Instagram Icon">
+            </a>
+            <a href="https://www.excel-pros.com/" class="icon-ref">
+                <img src="../assets/whatsapp.svg" alt="Whatsapp Icon">
+            </a>
+            <a href="https://www.excel-pros.com/" class="icon-ref">
+                <img src="../assets/twitter.svg" alt="Twitter Icon">
+            </a>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="contact">
+            <div class="title">Contact Us</div>
+            <div class="numbers">
+                <span>+1 (647) 706-6755</span>
+                <span>info@excel-pros.com</span>
+            </div>
+        </div>
+        <div class="descripttion">
+            We believe that Our Excel <br /> Consultling can Contribute <br /> to your Business Efficiency
+        </div>
+    </div>
+</body>
+
+</html>

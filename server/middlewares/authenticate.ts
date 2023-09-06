@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { expressjwt } from 'express-jwt';
 import { User } from "../models";
-import { BaseController } from '../api/v1/_base.controller';
+import { BaseController } from '../api/_base.controller';
 import { compose } from 'compose-middleware';
 import { config } from '../../environment/environment';
 

@@ -1,5 +1,5 @@
 import { IUser } from "../../../../types/user";
-import { Location, User } from "../../../models";
+import { User } from "../../../models";
 import jwt from "jsonwebtoken";
 import MailService from "../../../services/mail.service";
 import GoogleDriveService from "../../../services/google-drive.service";
@@ -10,178 +10,11 @@ export class UserService {
 
 	constructor() { }
 
-	async getUsersWithQuery(query): Promise<any> {
+	async get(): Promise<Array<IUser>> {
 		return new Promise(async (resolve, reject) => {
 			try {
-				let offset = +query?.offset || 0, limit = +query?.limit || 50;
-				offset = offset * limit;
-				let hash = {}
-				if (query) {
-					if (query.q) {
-						let search = String(query.q).toLowerCase();
-						hash = {
-							...hash,
-							$or: [
-								{ firstName: { $regex: search, $options: "i" } },
-								{ lastName: { $regex: search, $options: "i" } },
-								{ email: { $regex: search, $options: "i" } },
-								{ username: { $regex: search, $options: "i" } }
-
-							]
-						}
-					}
-					if (query.location && query.location.length) {
-						hash = {
-							...hash,
-							locationId: { $in: query.location }
-						}
-					}
-					if (query.role && query.role.length) {
-						hash = {
-							...hash,
-							roleId: { $in: query.role }
-						}
-					}
-					if (query.active === 'true') {
-						hash = {
-							...hash,
-							active: true
-						}
-					}
-				}
-
-				let users;
-				if (query?.sort) {
-					let sortable: any = {}
-					for (let u in query?.sort) {
-						sortable[u] = +query?.sort[u];
-					}
-					if (sortable?.location) {
-						const pipelineLocation = [
-							{
-								$lookup: {
-									from: 'locations',
-									localField: 'locationId',
-									foreignField: '_id',
-									as: 'loc'
-								}
-							},
-							{
-								$match: {
-									...hash
-								}
-							},
-							{
-								$sort: {
-									'loc.name': sortable.location,
-								}
-							},
-							{
-								$skip: offset
-							},
-							{
-								$limit: limit
-							}
-						]
-						users = await User.aggregate(pipelineLocation).exec();
-					}
-					else if (sortable?.role) {
-						const pipelineLocation = [
-							{
-								$lookup: {
-									from: 'roles',
-									localField: 'roleId',
-									foreignField: '_id',
-									as: 'role'
-								}
-							},
-							{
-								$match: {
-									...hash
-								}
-							},
-							{
-								$sort: {
-									'role.role': sortable.role,
-								}
-							},
-							{
-								$skip: offset
-							},
-							{
-								$limit: limit
-							}
-						]
-						users = await User.aggregate(pipelineLocation).exec();
-					}
-					else {
-						users = await User.find({ ...hash }).sort(sortable).skip(offset).limit(limit);
-					}
-				} else {
-					users = await User.find(hash).skip(offset).limit(limit);
-				}
-				return resolve({
-					data: users,
-					page: {
-						total: (await User.find(hash)).length,
-						offset: query?.offset || 0,
-						limit: query?.limit || 10
-					}
-				});
-			} catch (err) {
-				return reject(err);
-			}
-		})
-	}
-	async get(query): Promise<Array<IUser>> {
-		return new Promise(async (resolve, reject) => {
-			try {
-				const locations = await Location.find({});
-				let users;
-				if (query) {
-					users = await User.find({ username: { $regex: query, $options: 'i' } });
-				} else {
-					users = await User.find({});
-				}
-				let results = [];
-				users.forEach((user) => {
-					let obj = JSON.parse(JSON.stringify(user));
-					let location: any = locations.find((e) => e._id.toString() === user.locationId);
-					obj.locationName = location;
-					results.push(obj);
-				})
-				resolve(results);
-			} catch (err) {
-				return reject(err);
-			}
-		})
-	}
-	async updateFirstNameLastName(): Promise<Array<IUser>> {
-		return new Promise(async (resolve, reject) => {
-			try {
-				const user = await User.find();
-				const promises = []
-				user.forEach((usr) => {
-					if (!usr.firstName) {
-						const username = usr.username.replace(/\s+$/, "").split(' ');
-						const lastName = username.pop();
-						const firstName = username.join(' ');
-						let obj = usr;
-						if (username.length <= 1) {
-							obj.firstName = lastName;
-						} else {
-							obj.firstName = firstName;
-							obj.lastName = lastName;
-						}
-						const update = User.findOneAndUpdate({ _id: usr._id }, obj)
-						promises.push(update)
-					}
-				})
-				Promise.all(promises).then((res) => {
-					return resolve(res);
-				}).catch((err) => {
-					return reject(err);
-				})
+				let get = await User.find({});
+				return resolve(get);
 			} catch (err) {
 				return reject(err);
 			}
@@ -210,7 +43,6 @@ export class UserService {
 				const password = '';
 
 				const payload = { ...userData, email, password };
-				payload.locationId = new Types.ObjectId(String(payload.locationId));
 				payload.roleId = new Types.ObjectId(String(payload.roleId));
 
 				const userInstance = new User(payload);
@@ -244,7 +76,7 @@ export class UserService {
 				let options = {
 					username: user.username,
 					email: user.email,
-					resetPasswordToken: user.resetPasswordToken
+					resetPasswordToken: token
 				}
 
 				MailService.sendSetupPasswordEmail(options)
