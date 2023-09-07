@@ -1,7 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 
-<head>
+<head lang="en">
     <meta charset="UTF-8">
     <style>
         * {
@@ -10,7 +9,7 @@
             box-sizing: border-box;
         }
 
-        body {
+        #MainDiv {
             background: url(https://drive.google.com/uc?id=1ccAXKZRbwGwKvVsA8FPq-AIaEB1BPrfd&export=download);
             background-position: center;
             background-size: cover;
@@ -21,7 +20,7 @@
             padding: 20px;
         }
 
-        .container .greetings {
+        .greetings {
             text-align: center;
             font-size: 30px;
             font-family: sans-serif;
@@ -31,7 +30,7 @@
             margin-top: 60px;
         }
 
-        .container .tagline {
+        .tagline {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -40,7 +39,7 @@
             margin-top: 60px;
         }
 
-        .container .tagline .text {
+        .text {
             color: #3aba86;
             font-size: 32px;
             font-weight: 600;
@@ -48,28 +47,28 @@
             font-family: sans-serif;
         }
 
-        .container .tagline .boxes {
+        .boxes {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 5px;
         }
 
-        .container .tagline .boxes .small {
+        .small {
             height: 16px;
             width: 10px;
             background: #a7ffdb;
             border-radius: 2px;
         }
 
-        .container .tagline .boxes .medium {
+        .medium {
             height: 20px;
             width: 16px;
             background: #72e4b6;
             border-radius: 2px;
         }
 
-        .container .tagline .boxes .large {
+        .large {
             height: 24px;
             width: 20px;
             background: #3aba86;
@@ -92,7 +91,7 @@
             margin-top: 60px;
         }
 
-        .button-tag .button {
+        .button {
             background: #3aba86;
             color: white;
             font-family: sans-serif;
@@ -122,7 +121,7 @@
             margin-top: 20px;
         }
 
-        .social-media .icon-ref {
+        .icon-ref {
             text-decoration: none;
         }
 
@@ -135,7 +134,7 @@
             margin-top: 30px;
         }
 
-        .footer .contact {
+        .contact {
             display: flex;
             flex-direction: column;
             font-family: sans-serif;
@@ -143,19 +142,19 @@
             gap: 10px;
         }
 
-        .footer .contact .title {
+        .title {
             font-weight: 600;
             font-size: 20px;
         }
 
-        .footer .contact .numbers {
+        .numbers {
             display: flex;
             flex-direction: column;
             font-size: 14px;
             gap: 3px;
         }
 
-        .footer .descripttion {
+        .descripttion {
             font-weight: 600;
             font-size: 20px;
             font-family: sans-serif;
@@ -164,11 +163,11 @@
         }
 
         @media only screen and (max-width: 828px) {
-            .container .greetings {
+            .greetings {
                 font-size: 26px;
             }
 
-            .container .tagline .text {
+            .text {
                 font-size: 28px;
             }
 
@@ -176,28 +175,28 @@
                 font-size: 28px;
             }
 
-            .container .tagline .boxes .large {
+            .large {
                 height: 22px;
                 width: 18px;
             }
 
-            .container .tagline .boxes .medium {
+            .medium {
                 height: 18px;
                 width: 14px;
             }
 
-            .container .tagline .boxes .small {
+            .small {
                 height: 14px;
                 width: 8px;
             }
         }
 
         @media only screen and (max-width: 738px) {
-            .container .greetings {
+            .greetings {
                 font-size: 22px;
             }
 
-            .container .tagline .text {
+            .text {
                 font-size: 24px;
             }
 
@@ -205,32 +204,32 @@
                 font-size: 22px;
             }
 
-            .container .tagline {
+            .tagline {
                 gap: 20px;
             }
 
-            .container .tagline .boxes .large {
+            .large {
                 height: 22px;
                 width: 18px;
             }
 
-            .container .tagline .boxes .medium {
+            .medium {
                 height: 18px;
                 width: 14px;
             }
 
-            .container .tagline .boxes .small {
+            .small {
                 height: 14px;
                 width: 8px;
             }
         }
 
         @media only screen and (max-width: 642px) {
-            .container .greetings {
+            .greetings {
                 font-size: 18px;
             }
 
-            .container .tagline .text {
+            .text {
                 font-size: 20px;
             }
 
@@ -238,49 +237,49 @@
                 font-size: 18px;
             }
 
-            .container .tagline {
+            .tagline {
                 gap: 15px;
             }
 
-            .container .tagline .boxes .large {
+            .large {
                 height: 20px;
                 width: 16px;
             }
 
-            .container .tagline .boxes .medium {
+            .medium {
                 height: 16px;
                 width: 12px;
             }
 
-            .container .tagline .boxes .small {
+            .small {
                 height: 12px;
                 width: 8px;
             }
 
-            .button-tag .button {
+            .button {
                 font-size: 16px;
             }
 
-            .footer .contact .title {
+            .title {
                 font-size: 16px;
             }
 
-            .footer .contact .numbers {
+            .numbers {
                 font-size: 12px;
             }
 
-            .footer .descripttion {
+            .descripttion {
                 font-size: 16px;
             }
         }
 
         @media only screen and (max-width: 546px) {
-            .container .greetings {
+            .greetings {
                 font-size: 16px;
                 margin-top: 40px;
             }
 
-            .container .tagline .text {
+            .text {
                 font-size: 16px;
             }
 
@@ -289,22 +288,22 @@
                 margin-top: 40px;
             }
 
-            .container .tagline {
+            .tagline {
                 gap: 15px;
                 margin-top: 40px;
             }
 
-            .container .tagline .boxes .large {
+            .large {
                 height: 18px;
                 width: 14px;
             }
 
-            .container .tagline .boxes .medium {
+            .medium {
                 height: 14px;
                 width: 10px;
             }
 
-            .container .tagline .boxes .small {
+            .small {
                 height: 10px;
                 width: 8px;
             }
@@ -317,7 +316,7 @@
                 margin-top: 40px;
             }
 
-            .button-tag .button {
+            .button {
                 font-size: 16px;
             }
 
@@ -325,15 +324,15 @@
                 margin-top: 20px;
             }
 
-            .footer .contact .title {
+            .title {
                 font-size: 16px;
             }
 
-            .footer .contact .numbers {
+            .numbers {
                 font-size: 12px;
             }
 
-            .footer .descripttion {
+            .descripttion {
                 font-size: 16px;
             }
         }
@@ -341,67 +340,78 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="greetings">
-            Hello! <%= name %>
-        </div>
-        <div class="tagline">
-            <div class="boxes">
-                <div class="large"></div>
-                <div class="medium"></div>
-                <div class="small"></div>
+    <div id="MainDiv">
+        <div id="EncompassingDiv">
+            <div class="container">
+                <div class="greetings">
+                    Hello! <%= name %>
+                </div>
+                <div class="tagline">
+                    <div class="boxes">
+                        <div class="large"></div>
+                        <div class="medium"></div>
+                        <div class="small"></div>
+                    </div>
+                    <div class="text">
+                        Thankyou for your interest in Excel Pros
+                    </div>
+                    <div class="boxes">
+                        <div class="small"></div>
+                        <div class="medium"></div>
+                        <div class="large"></div>
+                    </div>
+                </div>
+                <div class="sub-tagline">
+                    Your Reliable Excel Partner for all your excel <br /> woes and problems
+                </div>
+                <div class="button-tag">
+                    <div class="button">
+                        We'll be in touch shortly
+                    </div>
+                </div>
+                <div class="logo">
+                    <img src="https://drive.google.com/uc?id=1-THewlPSfOq9begAMNpu2DiR64kNXlhx&export=download"
+                        alt="Excel Pros Logo">
+                </div>
+                <div class="social-media">
+                    <a href="https://www.excel-pros.com/" class="icon-ref">
+                        <img src="https://drive.google.com/uc?id=1ucivKscLT1KSHqi8R1Bf2-7jQWlVgL7k&export=download"
+                            alt="Youtube Icon">
+                    </a>
+                    <a href="https://ca.linkedin.com/company/excel-pros" class="icon-ref">
+                        <img src="https://drive.google.com/uc?id=1373ZO9FJzSoekIEyUhQ_Gaqw-sgruj-h&export=download"
+                            alt="linkedin Icon">
+                    </a>
+                    <a href="https://www.excel-pros.com/" class="icon-ref">
+                        <img src="https://drive.google.com/uc?id=1BJLLWi8NBXHP52OUYE0AmG4CGOeikMsw&export=download"
+                            alt="Facebook Icon">
+                    </a>
+                    <a href="https://www.excel-pros.com/" class="icon-ref">
+                        <img src="https://drive.google.com/uc?id=115Hs98RCCBaD8YdCDZ1gRjADstm73lmA&export=download"
+                            alt="Instagram Icon">
+                    </a>
+                    <a href="https://www.excel-pros.com/" class="icon-ref">
+                        <img src="https://drive.google.com/uc?id=1TUinn42Bpq3Wd1o2Ow9YnM86WyJLACVu&export=download"
+                            alt="Whatsapp Icon">
+                    </a>
+                    <a href="https://www.excel-pros.com/" class="icon-ref">
+                        <img src="https://drive.google.com/uc?id=1I4bAMtndIZxHEduIEpr-Suo8X_nsL-VD&export=download"
+                            alt="Twitter Icon">
+                    </a>
+                </div>
             </div>
-            <div class="text">
-                Thankyou for your interest in Excel Pros
+            <div class="footer">
+                <div class="contact">
+                    <div class="title">Contact Us</div>
+                    <div class="numbers">
+                        <span>+1 (647) 706-6755</span>
+                        <span>info@excel-pros.com</span>
+                    </div>
+                </div>
+                <div class="descripttion">
+                    We believe that Our Excel <br /> Consultling can Contribute <br /> to your Business Efficiency
+                </div>
             </div>
-            <div class="boxes">
-                <div class="small"></div>
-                <div class="medium"></div>
-                <div class="large"></div>
-            </div>
-        </div>
-        <div class="sub-tagline">
-            Your Reliable Excel Partner for all your excel <br /> woes and problems
-        </div>
-        <div class="button-tag">
-            <div class="button">
-                We'll be in touch shortly
-            </div>
-        </div>
-        <div class="logo">
-            <img src="https://drive.google.com/uc?id=1eCc_kEZi8hLWTGfj485zHrmJYRduNBKZ&export=download" alt="Excel Pros Logo">
-        </div>
-        <div class="social-media">
-            <a href="https://www.excel-pros.com/" class="icon-ref">
-                <img src="https://drive.google.com/uc?id=1lHnA0xnrZsaojPOLrJqF201ytcER1tMS&export=download" alt="Youtube Icon">
-            </a>
-            <a href="https://ca.linkedin.com/company/excel-pros" class="icon-ref">
-                <img src="https://drive.google.com/uc?id=1bwTnWweZJe_ZctntzlX40ATw8uwmv6n_&export=download" alt="linkedin Icon">
-            </a>
-            <a href="https://www.excel-pros.com/" class="icon-ref">
-                <img src="https://drive.google.com/uc?id=1ROg5MIftBkYvqfMGhniaeWUcbSI7XibY&export=download" alt="Facebook Icon">
-            </a>
-            <a href="https://www.excel-pros.com/" class="icon-ref">
-                <img src="https://drive.google.com/uc?id=1LtEIYg4_F6uYfoXlI2N-5cdjEdW7CpCh&export=download" alt="Instagram Icon">
-            </a>
-            <a href="https://www.excel-pros.com/" class="icon-ref">
-                <img src="https://drive.google.com/uc?id=1lcNkiqC2avV48U0xgSgwdZDXByJCCYhy&export=download" alt="Whatsapp Icon">
-            </a>
-            <a href="https://www.excel-pros.com/" class="icon-ref">
-                <img src="https://drive.google.com/uc?id=1CU-nZXMzCzYeHwLvnO7gvEHaBDN6RR_y&export=download" alt="Twitter Icon">
-            </a>
-        </div>
-    </div>
-    <div class="footer">
-        <div class="contact">
-            <div class="title">Contact Us</div>
-            <div class="numbers">
-                <span>+1 (647) 706-6755</span>
-                <span>info@excel-pros.com</span>
-            </div>
-        </div>
-        <div class="descripttion">
-            We believe that Our Excel <br /> Consultling can Contribute <br /> to your Business Efficiency
         </div>
     </div>
 </body>

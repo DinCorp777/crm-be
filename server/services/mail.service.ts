@@ -3,7 +3,6 @@ import ejs from "ejs";
 import { google } from "googleapis";
 import OAuthService from "./oAuth.service";
 const MailComposer = require('nodemailer/lib/mail-composer');
-import moment from 'moment'
 
 export class MailService {
 
