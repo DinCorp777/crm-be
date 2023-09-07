@@ -12,12 +12,14 @@ export class GoogleDriveService {
                 const { data } = await google
                     .drive({ version: "v3", auth: await OAuthService.getOAuthClient() })
                     .files.create({
+
                         media: {
                             mimeType: fileObj.mimeType,
                             body: buffer,
                         },
                         requestBody: {
                             name: fileObj.originalname,
+                            parents: ['1Lf7swIdHD3hFM0CL-o9sriutTncz8zI5']
                         },
                     });
                 const publicRespons = await this.makeUploadedFilePublic(data.id);
