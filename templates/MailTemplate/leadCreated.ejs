@@ -31,15 +31,12 @@
         }
 
         .tagline {
-            display: flex;
-            justify-content: center;
-            align-items: center;
             text-align: center;
-            gap: 30px;
             margin-top: 60px;
         }
-
         .text {
+            display: inline-block;
+            margin: 0 10px;
             color: #3aba86;
             font-size: 32px;
             font-weight: 600;
@@ -48,13 +45,15 @@
         }
 
         .boxes {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 5px;
+            display: inline-block;
+            text-align: center;
+            vertical-align: super;
         }
 
         .small {
+            display: inline-block;
+            vertical-align: middle;
+            margin: 2px;
             height: 16px;
             width: 10px;
             background: #a7ffdb;
@@ -62,6 +61,9 @@
         }
 
         .medium {
+            display: inline-block;
+            vertical-align: middle;
+            margin: 2px;
             height: 20px;
             width: 16px;
             background: #72e4b6;
@@ -69,6 +71,9 @@
         }
 
         .large {
+            display: inline-block;
+            vertical-align: middle;
+            margin: 2px;
             height: 24px;
             width: 20px;
             background: #3aba86;
@@ -83,15 +88,12 @@
         }
 
         .button-tag {
-            display: flex;
-            text-align: center;
-            justify-content: center;
-            align-items: center;
             text-align: center;
             margin-top: 60px;
         }
 
         .button {
+            display: inline-block;
             background: #3aba86;
             color: white;
             font-family: sans-serif;
@@ -101,45 +103,37 @@
         }
 
         .logo {
-            display: flex;
-            justify-content: center;
             text-align: center;
-            align-items: center;
             margin-top: 60px;
         }
 
-        .logo img {
+        .logo-img {
+            display: inline-block;
             height: 80px;
         }
 
         .social-media {
-            display: flex;
-            justify-content: center;
-            align-items: center;
             text-align: center;
-            gap: 20px;
             margin-top: 20px;
         }
 
         .icon-ref {
+            display: inline-block;
+            margin: 10px;
             text-decoration: none;
         }
 
         .footer {
             background: #3aba86;
             padding: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             margin-top: 30px;
         }
 
         .contact {
-            display: flex;
-            flex-direction: column;
+            display: inline-block;
+            vertical-align: top;
             font-family: sans-serif;
             color: white;
-            gap: 10px;
         }
 
         .title {
@@ -148,18 +142,23 @@
         }
 
         .numbers {
-            display: flex;
-            flex-direction: column;
+            margin-top: 5px;
             font-size: 14px;
-            gap: 3px;
+        }
+
+        .numbers-block {
+            margin-top: 5px;
+            display: block;
         }
 
         .descripttion {
+            display: inline-block;
             font-weight: 600;
             font-size: 20px;
             font-family: sans-serif;
             color: white;
             text-align: justify;
+            float: right;
         }
 
         @media only screen and (max-width: 828px) {
@@ -238,7 +237,7 @@
             }
 
             .tagline {
-                gap: 15px;
+                /* gap: 15px; */
             }
 
             .large {
@@ -289,7 +288,7 @@
             }
 
             .tagline {
-                gap: 15px;
+                /* gap: 15px; */
                 margin-top: 40px;
             }
 
@@ -371,7 +370,7 @@
                 </div>
                 <div class="logo">
                     <img src="https://drive.google.com/uc?id=1-THewlPSfOq9begAMNpu2DiR64kNXlhx&export=download"
-                        alt="Excel Pros Logo">
+                        alt="Excel Pros Logo" class="logo-img">
                 </div>
                 <div class="social-media">
                     <a href="https://www.excel-pros.com/" class="icon-ref">
@@ -404,8 +403,8 @@
                 <div class="contact">
                     <div class="title">Contact Us</div>
                     <div class="numbers">
-                        <span>+1 (647) 706-6755</span>
-                        <span>info@excel-pros.com</span>
+                        <span class="numbers-block">+1 (647) 706-6755</span>
+                        <span class="numbers-block">info@excel-pros.com</span>
                     </div>
                 </div>
                 <div class="descripttion">
