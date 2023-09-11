@@ -7,9 +7,11 @@ export interface ILeads extends Document {
 	company: string;
 	email: string;
 	phone: string;
-	assintance: Array<ILeadArrays>;
-	excelVersion: Array<ILeadArrays>;
-	description: string;
-	file: string;
+	assintance?: Array<ILeadArrays>;
+	excelVersion?: Array<ILeadArrays>;
+	description?: string;
+	file?: string;
+	subject?: string;
+	budget?: number;
 	createdAt?: Date;
 }

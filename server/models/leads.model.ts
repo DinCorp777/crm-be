@@ -14,6 +14,8 @@ const LeadsSchema = new Schema<ILeads>({
 	excelVersion: { type: [] },
 	description: { type: Types.String },
 	file: { type: Types.String },
+	subject: { type: Types.String },
+	budget: { type: Types.Number },
 	createdAt: { type: Types.Date, default: new Date() }
 });
 

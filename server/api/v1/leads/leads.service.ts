@@ -33,9 +33,11 @@ export class LeadsService {
                     company: payload.company,
                     email: payload.email,
                     phone: payload.phone,
-                    assintance: payload.assintance,
-                    excelVersion: payload.excelVersion,
-                    description: payload.description,
+                    assintance: payload?.assintance || undefined,
+                    excelVersion: payload?.excelVersion || undefined,
+                    description: payload?.description || undefined,
+                    subject: payload?.subject || undefined,
+                    budget: payload?.budget || undefined,
                     file: fileAvailable?.webContentLink || "",
                 }
 
