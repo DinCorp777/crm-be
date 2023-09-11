@@ -37,32 +37,29 @@ export class AuthService {
                 let permissions = [];
                 let role = '';
 
-                Roles.find({ _id: user.roleId })
+                Roles.findOne({ _id: user.roleId })
                     .then((res) => {
-                        if (res.length) {
-                            let one = res[0];
-                            role = one.role;
-                            one.access.forEach((access) => {
-                                access.permissions.forEach((permission) => {
-                                    let obj = {
-                                        featureName: permission.featureName,
-                                        accessValue: permission.accessValue
-                                    }
-                                    permissions.push(obj);
-                                });
+                        role = res.role;
+                        res?.access?.forEach((access) => {
+                            access?.permissions?.forEach((permission) => {
+                                let obj = {
+                                    featureName: permission.featureName,
+                                    accessValue: permission.accessValue
+                                }
+                                permissions.push(obj);
                             });
-                            resolve({
-                                id: user._id,
-                                email: user.email,
-                                username: user.username,
-                                roleId: user.roleId,
-                                profilePicture: user.profilePicture,
-                                role,
-                                permissions: permissions,
-                                accessToken: token,
-                                createdAt: user.createdAt,
-                            })
-                        }
+                        });
+                        return resolve({
+                            id: user._id,
+                            email: user.email,
+                            username: user.username,
+                            roleId: user.roleId,
+                            profilePicture: user.profilePicture,
+                            role,
+                            permissions: permissions,
+                            accessToken: token,
+                            createdAt: user.createdAt,
+                        })
                     });
             }
             catch (err) {
