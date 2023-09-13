@@ -12,6 +12,6 @@ export interface ILeads extends Document {
 	description?: string;
 	file?: string;
 	subject?: string;
-	budget?: number;
+	budget?: string;
 	createdAt?: Date;
 }
