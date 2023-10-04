@@ -11,7 +11,7 @@ export class LeadsHelperService {
           email: "info@excel-pros.com",
           data: lead
         }
-        MailService.sendLeadCreationEmail(request, true)
+        MailService.sendLeadCreationEmail(request)
           .then((res) => {
             const requestLead = {
               template: "./templates/MailTemplate/leadCreated.ejs",
@@ -19,7 +19,7 @@ export class LeadsHelperService {
               email: lead.email,
               data: lead
             }
-            MailService.sendLeadCreationEmail(requestLead, false)
+            MailService.sendLeadCreationEmail(requestLead)
               .then((res) => {
                 return resolve(lead);
               })

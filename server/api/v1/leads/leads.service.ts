@@ -2,6 +2,8 @@ import { ILeads } from "../../../../types/leads";
 import { Leads } from "../../../models";
 import LeadsHelperService from "../../../services/leads-helper.service";
 import GoogleDriveService from "../../../services/google-drive.service";
+import path from "path";
+import { rimraf } from "rimraf";
 
 export class LeadsService {
     constructor() { }
@@ -16,12 +18,14 @@ export class LeadsService {
             }
         });
     }
-    async create(file, payload): Promise<ILeads> {
+    async create(file, payload): Promise<any> {
         return new Promise(async (resolve, reject) => {
             try {
                 if (!payload) {
                     return reject({ message: "Invalid Payload", code: 400 });
                 }
+                // rimraf(`./${file.path}`);
+                // return resolve(file);
                 let fileAvailable;
                 if (file) {
                     const fileLink: any = await GoogleDriveService.uploadFile(file)
@@ -39,11 +43,15 @@ export class LeadsService {
                     subject: payload?.subject || undefined,
                     budget: payload?.budget || undefined,
                     file: fileAvailable?.webContentLink || "",
+                    fileObj: file
                 }
 
                 new Leads(requestPayload).save().then((ld) => {
-                    LeadsHelperService.sendEmailLeadCreation(ld)
+                    LeadsHelperService.sendEmailLeadCreation(requestPayload)
                         .then((res) => {
+                            if(file) {
+                                rimraf(`./${file?.path}`);
+                            }
                             return resolve(ld);
                         })
                         .catch((err) => {

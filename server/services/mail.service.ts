@@ -74,7 +74,7 @@ export class MailService {
             }
         })
     }
-    public sendLeadCreationEmail(data, attachments) {
+    public sendLeadCreationEmail(data) {
         return new Promise(async (resolve, reject) => {
             try {
                 let email = await ejs.renderFile(data.template, data.data);
@@ -85,10 +85,10 @@ export class MailService {
                     html: email,
                     textEncoding: "base64",
                 };
-                if(attachments) {
+                if(data.data.file) {
                     options.attachments = [{
-                        filename: "example.xlsx",
-                        path: './uploads/example.xlsx'
+                        filename: data.data?.fileObj?.filename,
+                        path: data.data?.fileObj?.path
                     }]
                 }
                 this.sendMail(options).then((e) => {

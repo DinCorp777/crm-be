@@ -1,24 +1,22 @@
 import stream from "stream";
 import { google } from "googleapis";
 import OAuthService from "./oAuth.service";
+import fs from "fs";
 
 export class GoogleDriveService {
-
     async uploadFile(fileObj) {
         return new Promise(async (resolve, reject) => {
             try {
-                const buffer = new stream.PassThrough();
-                buffer.end(fileObj.buffer);
                 const { data } = await google
                     .drive({ version: "v3", auth: await OAuthService.getOAuthClient() })
                     .files.create({
 
                         media: {
                             mimeType: fileObj.mimeType,
-                            body: buffer,
+                            body: fs.createReadStream(`./${fileObj.path}`),
                         },
                         requestBody: {
-                            name: fileObj.originalname,
+                            name: fileObj.filename,
                             parents: ['1Lf7swIdHD3hFM0CL-o9sriutTncz8zI5']
                         },
                     });
