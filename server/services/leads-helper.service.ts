@@ -6,18 +6,20 @@ export class LeadsHelperService {
     return new Promise(async (resolve, reject) => {
       try {
         const request = {
+          template: "./templates/MailTemplate/leadCreatedInfo.ejs",
           subject: `This email response will be sent to lead name ${lead.name} with email address ${lead.email}.`,
           email: "info@excel-pros.com",
-          name: lead.name
+          data: lead
         }
-        MailService.sendLeadCreationEmail(request)
+        MailService.sendLeadCreationEmail(request, true)
           .then((res) => {
             const requestLead = {
-              subject: "Your request has been Successdully Recevied to Excel Pros.",
+              template: "./templates/MailTemplate/leadCreated.ejs",
+              subject: "Your request has been successfully received by Excel Pros.",
               email: lead.email,
-              name: lead.name
+              data: lead
             }
-            MailService.sendLeadCreationEmail(requestLead)
+            MailService.sendLeadCreationEmail(requestLead, false)
               .then((res) => {
                 return resolve(lead);
               })

@@ -87,10 +87,16 @@
 
         .sub-tagline {
             text-align: center;
+            width: 100%;
             font-size: 22px;
             font-family: 'Lato', sans-serif;
             margin-top: 60px;
             font-weight: 300;
+        }
+        .sub-tagline-details {
+            display: inline-block;
+            vertical-align: middle;
+            text-align: left;
         }
 
         .excel-msg {
@@ -98,7 +104,7 @@
             margin-top: 60px;
             font-family: 'Lato', sans-serif;
             font-style: italic;
-            font-size: 20px;
+            font-size: 24px;
             font-weight: 700;
             color: #3aba86;
         }
@@ -322,7 +328,7 @@
                 height: 100px;
             }
 
-            .button-khubsurat { 
+            .button-khubsurat {
                 font-size: 16px;
             }
         }
@@ -376,7 +382,7 @@
                 height: 80px;
             }
 
-            .button-khubsurat { 
+            .button-khubsurat {
                 font-size: 14px;
             }
         }
@@ -392,7 +398,7 @@
             }
 
             .sub-tagline {
-                font-size: 10px;    
+                font-size: 10px;
                 margin-top: 40px;
             }
 
@@ -429,7 +435,7 @@
                 height: 70px;
             }
 
-            .button-khubsurat { 
+            .button-khubsurat {
                 font-size: 12px;
             }
         }
@@ -450,7 +456,7 @@
                         <div class="small"></div>
                     </div>
                     <div class="text">
-                        Thank you for Your Submission
+                        New Lead Submission
                     </div>
                     <div class="boxes">
                         <div class="small"></div>
@@ -459,11 +465,14 @@
                     </div>
                 </div>
                 <div class="sub-tagline">
-                    We are reviewing your inquiry and will be assigning it to one of our consultants soon!
-                    <br><br><br>
-                    If you have any information/question, please feel free to respond to this email!
-                    <br><br>
-                    Please attach any sample files you may have as well.
+                    <div class="sub-tagline-details">
+                        Name: <%= name %> <br>
+                        Company: <%= company %> <br>
+                        Email: <%= email %> <br>
+                        Phone: <%= phone %> <br>
+                        Subject: <%= subject %> <br>
+                        Description: <%= description %> <br>
+                    </div>
                 </div>
                 <div class="excel-msg">
                     We look forward to speaking with you!

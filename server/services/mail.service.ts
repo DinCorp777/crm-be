@@ -74,19 +74,23 @@ export class MailService {
             }
         })
     }
-    public sendLeadCreationEmail(data) {
+    public sendLeadCreationEmail(data, attachments) {
         return new Promise(async (resolve, reject) => {
             try {
-                let email = await ejs.renderFile("./templates/MailTemplate/leadCreated.ejs", {
-                    name: data.name
-                });
-                const options = {
+                let email = await ejs.renderFile(data.template, data.data);
+                let options: any = {
                     to: data.email,
                     subject: data.subject,
                     template: "index",
                     html: email,
                     textEncoding: "base64",
                 };
+                if(attachments) {
+                    options.attachments = [{
+                        filename: "example.xlsx",
+                        path: './uploads/example.xlsx'
+                    }]
+                }
                 this.sendMail(options).then((e) => {
                     return resolve(e);
                 });
